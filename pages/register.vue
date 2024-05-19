@@ -2,12 +2,11 @@
 definePageMeta({
   middleware: ["auth"],
 });
-
+const router = useRouter();
 const client = useSupabaseClient();
 const email = ref("");
 const password = ref("");
 const errorsMsg = ref(null);
-const successMsg = ref(null);
 
 async function SignUp() {
   try {
@@ -16,7 +15,7 @@ async function SignUp() {
       password: password.value,
     });
     if (error) throw error;
-    successMsg.value = "Check your email to confirm your account";
+    router.push("\login");
   } catch (error) {
     errorsMsg.value = error.message;
   }

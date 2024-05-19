@@ -1,28 +1,30 @@
 <script setup lang="ts">
+
 definePageMeta({
   middleware: ["auth"],
 });
-
+const authStore = useAuthStore();
 const client = useSupabaseClient();
 const router = useRouter();
+
 const email = ref("");
 const password = ref("");
-const errorsMsg = ref(null);
+const errorsMsg = ref<string | null>(null);
 
-async function SignIn() {
+const SignIn = async () => {
   try {
     const { error } = await client.auth.signInWithPassword({
       email: email.value,
       password: password.value,
     });
     if (error) throw error;
+    authStore.login(); 
     router.push("/success");
-  } catch (error) {
+  } catch (error: any) {
     errorsMsg.value = error.message;
   }
 }
 </script>
-
 <template>
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <form
