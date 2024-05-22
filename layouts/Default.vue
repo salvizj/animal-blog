@@ -13,7 +13,9 @@
 
 <template>
 	<div>
-		<header class="bg-gradient-to-r from-gray-800 to-black p-6 shadow-md">
+		<header
+			class="bg-gradient-to-r bg-gradient-to-r from-indigo-800 to-black p-6 shadow-md tracking-widest"
+		>
 			<nav class="container mx-auto flex justify-between items-center">
 				<ul class="flex space-x-4">
 					<li>
@@ -79,7 +81,10 @@
 			</nav>
 		</header>
 		<main class="container mx-auto p-6">
-			<NuxtPage />
+			<NuxtLayout>
+				<NuxtPage />
+			</NuxtLayout>
+			<Footer />
 		</main>
 	</div>
 </template>

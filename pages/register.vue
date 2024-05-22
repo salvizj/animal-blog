@@ -1,56 +1,9 @@
-<script setup>
-	definePageMeta({
-		middleware: ['auth'],
-	});
-	const router = useRouter();
-	const client = useSupabaseClient();
-	const email = ref('');
-	const password = ref('');
-	const errorsMsg = ref(null);
-
-	async function SignUp() {
-		try {
-			const { data, error } = await client.auth.signUp({
-				email: email.value,
-				password: password.value,
-			});
-			if (error) throw error;
-			router.push('\login');
-		} catch (error) {
-			errorsMsg.value = error.message;
-		}
-	}
-</script>
-
 <template>
 	<div class="flex justify-center items-center min-h-screen bg-gray-100">
-		<form
-			@submit.prevent="SignUp"
-			class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
-		>
-			<h1 class="p-2 flex flex-wrap content-center">Register</h1>
-			<div class="mb-4">
-				<input
-					type="email"
-					placeholder="Email"
-					v-model="email"
-					class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<div class="mb-6">
-				<input
-					type="password"
-					placeholder="Password"
-					v-model="password"
-					class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-				/>
-			</div>
-			<button
-				type="submit"
-				class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
-			>
-				Register
-			</button>
-		</form>
+		<register-form />
 	</div>
 </template>
+
+<script setup>
+	import RegisterForm from '@/components/RegisterForm.vue';
+</script>

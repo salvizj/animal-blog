@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+.txt
 
 # Node dependencies
 node_modules

@@ -4,6 +4,7 @@
 			v-for="post in fetchData"
 			:key="post.id"
 			:imageUrl="post.publicUrl"
+			:type="post.type"
 			:title="post.title"
 			:text="post.text"
 		/>
