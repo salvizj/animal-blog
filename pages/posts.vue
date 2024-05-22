@@ -1,9 +1,9 @@
 <template>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		<PostCard
-			v-for="post in postsData"
+			v-for="post in fetchData"
 			:key="post.id"
-			:imageUrl="getStorageImageUrl(post.userId)"
+			:imageUrl="post.publicUrl"
 			:title="post.title"
 			:text="post.text"
 		/>
@@ -13,19 +13,24 @@
 <script setup>
 	import PostCard from '~/components/PostCard.vue';
 
-	const postsData = ref([]);
+	const fetchData = ref([]);
 	const supabase = useSupabaseClient();
-
-	// Function to get the storage image URL for a specific user ID
-	const getStorageImageUrl = (userId) => {
-		return `posts/${userId}/image.jpg`;
-	};
 
 	onMounted(async () => {
 		try {
-			// Fetch data from the regular table 'posts'
-			const { data: postData } = await supabase.from('posts').select();
-			postsData.value = postData;
+			const { data: postData, error } = await supabase
+				.from('posts')
+				.select();
+			if (error) {
+				throw error;
+			}
+			fetchData.value = postData.map((post) => ({
+				...post,
+				publicUrl: post.image_url
+					? JSON.parse(post.image_url).data.publicUrl
+					: '',
+			}));
+			console.log(fetchData.value);
 		} catch (error) {
 			console.error('Failed to fetch data:', error.message);
 		}

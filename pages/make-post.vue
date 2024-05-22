@@ -5,6 +5,7 @@
 	const user = useSupabaseUser();
 	const supabase = useSupabaseClient();
 	const router = useRouter();
+
 	const title = ref(null);
 	const text = ref(null);
 	const imageUrl = ref(null);
@@ -30,10 +31,7 @@
 
 		const storage = supabase.storage.from('posts');
 
-		// Create a unique path for each user's image
-		const imagePath = `${userId.value}/posts/_${imageFile.value.name}`;
-
-		// Upload image to Supabase Storage
+		const imagePath = `user_${userId.value}/${imageFile.value.name}`;
 		const { error } = await storage.upload(imagePath, imageFile.value);
 
 		if (error) {
@@ -43,7 +41,7 @@
 		}
 
 		const publicURL = storage.getPublicUrl(imagePath);
-		// Insert post data into Supabase
+
 		const { error: postError } = await supabase.from('posts').insert([
 			{
 				user_id: userId,
@@ -56,7 +54,7 @@
 		if (postError) {
 			console.error(postError);
 			alert('Failed to create post.');
-			return;
+			router.push('/posts');
 		}
 
 		title.value = '';
