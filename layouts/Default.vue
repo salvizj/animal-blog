@@ -23,7 +23,7 @@
 							>Home</NuxtLink
 						>
 					</li>
-					<li v-if="authStore.isLoggedIn">
+					<li>
 						<NuxtLink
 							to="/about"
 							class="text-white hover:text-gray-400 transition-colors duration-300"

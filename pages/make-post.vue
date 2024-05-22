@@ -1,15 +1,18 @@
-<script setup lang="ts">
-	const { value: user } = useSupabaseUser();
+<script setup>
+	definePageMeta({
+		middleware: ['auth'],
+	});
+	const user = useSupabaseUser();
 	const supabase = useSupabaseClient();
 	const router = useRouter();
-	const title = ref<string | null>(null);
-	const text = ref<string | null>(null);
-	const imageUrl = ref<string | null>(null);
-	const imageFile = ref<File | null>(null);
-	const userId = ref<string | null>(user?.id ?? null);
+	const title = ref(null);
+	const text = ref(null);
+	const imageUrl = ref(null);
+	const imageFile = ref(null);
+	const userId = ref(user.value?.id);
 
-	const previewImage = (event: Event) => {
-		const file = (event.target as HTMLInputElement).files?.[0];
+	const previewImage = (event) => {
+		const file = event.target.files?.[0];
 		if (file) {
 			imageUrl.value = URL.createObjectURL(file);
 			imageFile.value = file;
@@ -28,9 +31,7 @@
 		const storage = supabase.storage.from('posts');
 
 		// Create a unique path for each user's image
-		const imagePath = `user_${userId.value}/posts/${Date.now()}_${
-			imageFile.value.name
-		}`;
+		const imagePath = `${userId.value}/posts/_${imageFile.value.name}`;
 
 		// Upload image to Supabase Storage
 		const { error } = await storage.upload(imagePath, imageFile.value);
@@ -45,6 +46,7 @@
 		// Insert post data into Supabase
 		const { error: postError } = await supabase.from('posts').insert([
 			{
+				user_id: userId,
 				title: title.value,
 				text: text.value,
 				image_url: publicURL,
@@ -57,7 +59,6 @@
 			return;
 		}
 
-		// Clear form fields
 		title.value = '';
 		text.value = '';
 		imageUrl.value = null;

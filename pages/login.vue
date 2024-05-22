@@ -1,14 +1,15 @@
-<script setup lang="ts">
+<script setup>
 	definePageMeta({
 		middleware: ['auth'],
 	});
+
 	const authStore = useAuthStore();
 	const client = useSupabaseClient();
 	const router = useRouter();
 
 	const email = ref('');
 	const password = ref('');
-	const errorsMsg = ref<string | null>(null);
+	const errorsMsg = ref(null);
 
 	const SignIn = async () => {
 		try {
@@ -19,11 +20,12 @@
 			if (error) throw error;
 			authStore.login();
 			router.push('/success');
-		} catch (error: any) {
+		} catch (error) {
 			errorsMsg.value = error.message;
 		}
 	};
 </script>
+
 <template>
 	<div class="flex justify-center items-center min-h-screen bg-gray-100">
 		<form

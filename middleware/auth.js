@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
 	const user = useSupabaseUser().value;
-	const privateRoutes = ['/about', '/logout', '/my-posts', '/make-post'];
+	const privateRoutes = ['/logout', '/my-posts', '/make-post'];
 	const authRoutes = ['/login', '/register'];
 	const allRoutes = [
 		'/about',
@@ -12,7 +12,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 		'/register',
 		'/make-post',
 	];
-
 	if (user && authRoutes.includes(to.path)) {
 		return '/';
 	}
