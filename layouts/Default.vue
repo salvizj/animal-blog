@@ -84,7 +84,6 @@
 			<NuxtLayout>
 				<NuxtPage />
 			</NuxtLayout>
-			<Footer />
 		</main>
 	</div>
 </template>
