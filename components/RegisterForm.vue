@@ -4,7 +4,7 @@
 		class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
 	>
 		<h1
-			class="pb-6 font-semibold text-2xl md:text-3xl tracking-wider text-center"
+			class="pb-6 font-semibold text-2xl md:text-3xl tracking-wider text-center text-black"
 		>
 			Register
 		</h1>
@@ -13,7 +13,7 @@
 				type="email"
 				placeholder="Email"
 				v-model="email"
-				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
+				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg text-black"
 			/>
 		</div>
 		<div class="mb-6">
@@ -21,7 +21,7 @@
 				type="password"
 				placeholder="Password"
 				v-model="password"
-				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
+				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg text-black"
 			/>
 		</div>
 		<button

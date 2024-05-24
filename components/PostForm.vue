@@ -1,5 +1,11 @@
 <template>
-	<form @submit.prevent="submitPost" class="space-y-4">
+	<form
+		@submit.prevent="submitPost"
+		class="space-y-4 rounded-lg max-w-lg mx-auto p-4 bg-white shadow-md"
+	>
+		<h1 class="text-3xl font-bold mb-6 text-center text-black">
+			Create a Fun Home Animal Post
+		</h1>
 		<div v-if="imageUrl" class="mb-4">
 			<img
 				:src="imageUrl"
@@ -9,53 +15,61 @@
 		</div>
 
 		<div>
-			<label for="img" class="block text-xl mb-2">Image:</label>
+			<label for="img" class="block text-xl mb-2 text-black"
+				>Image:</label
+			>
 			<input
 				type="file"
 				id="img"
 				@change="previewImage"
 				accept="image/*"
-				class="block w-full text-lg p-2 border rounded"
+				class="block w-full text-lg p-2 border rounded text-black"
 			/>
 		</div>
 
 		<div>
-			<label for="type" class="block text-xl mb-2">Animal type:</label>
+			<label for="type" class="block text-xl mb-2 text-black"
+				>Animal type:</label
+			>
 			<input
 				type="text"
 				id="type"
 				v-model="type"
 				required
-				class="block w-full text-2xl p-3 border rounded"
+				class="block w-full text-2xl p-3 border rounded text-black"
 			/>
 		</div>
 
 		<div>
-			<label for="title" class="block text-xl mb-2">Title:</label>
+			<label for="title" class="block text-xl mb-2 text-black"
+				>Title:</label
+			>
 			<input
 				type="text"
 				id="title"
 				v-model="title"
 				required
-				class="block w-full text-2xl p-3 border rounded"
+				class="block w-full text-2xl p-3 border rounded text-black"
 			/>
 		</div>
 
 		<div>
-			<label for="text" class="block text-xl mb-2">Text:</label>
+			<label for="text" class="block text-xl mb-2 text-black"
+				>Text:</label
+			>
 			<textarea
 				id="text"
 				v-model="text"
 				rows="6"
 				required
-				class="block w-full text-2xl p-3 border rounded"
+				class="block w-full text-2xl p-3 border rounded text-black"
 			></textarea>
 		</div>
 
 		<div class="text-center">
 			<button
 				type="submit"
-				class="bg-blue-500 text-white text-lg py-2 px-4 rounded hover:bg-blue-600"
+				class="bg-indigo-400 text-white text-lg py-2 px-4 rounded hover:bg-indigo-900"
 			>
 				Submit Post
 			</button>
