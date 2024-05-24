@@ -3,13 +3,17 @@
 		@submit.prevent="signUp"
 		class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm"
 	>
-		<h1 class="p-2 flex flex-wrap content-center">Register</h1>
+		<h1
+			class="pb-6 font-semibold text-2xl md:text-3xl tracking-wider text-center"
+		>
+			Register
+		</h1>
 		<div class="mb-4">
 			<input
 				type="email"
 				placeholder="Email"
 				v-model="email"
-				class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
 			/>
 		</div>
 		<div class="mb-6">
@@ -17,12 +21,12 @@
 				type="password"
 				placeholder="Password"
 				v-model="password"
-				class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-900 text-lg"
 			/>
 		</div>
 		<button
 			type="submit"
-			class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+			class="w-full bg-indigo-800 text-white py-3 rounded-lg hover:bg-indigo-900 text-lg"
 		>
 			Register
 		</button>
