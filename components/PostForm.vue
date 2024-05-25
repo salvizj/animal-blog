@@ -1,12 +1,12 @@
 <template>
 	<form
 		@submit.prevent="submitPost"
-		class="space-y-4 rounded-lg max-w-lg mx-auto p-10 bg-white shadow-md"
+		class="space-y-6 rounded-lg max-w-lg mx-auto p-10 bg-white shadow-md"
 	>
-		<h1 class="text-3xl font-bold mb-6 text-center text-black">
+		<h1 class="text-3xl font-bold mb-8 text-center text-black">
 			Create an Animal Blog Post
 		</h1>
-		<div v-if="imageUrl" class="mb-4">
+		<div v-if="imageUrl" class="mb-6">
 			<img
 				:src="imageUrl"
 				alt="Preview"
@@ -69,7 +69,7 @@
 		<div class="text-center">
 			<button
 				type="submit"
-				class="bg-indigo-400 text-white text-lg py-2 px-4 rounded hover:bg-indigo-900"
+				class="bg-indigo-400 text-white text-lg py-3 px-6 rounded hover:bg-indigo-900"
 			>
 				Submit Post
 			</button>
