@@ -51,6 +51,11 @@
 				<ul
 					class="flex flex-col gap-5 md:flex-row md:space-x-4 md:space-y-0"
 				>
+					<li v-if="authStore.isLoggedIn">
+						<NuxtLink to="/profile" class="hover:text-indigo-400"
+							>Profile</NuxtLink
+						>
+					</li>
 					<li v-if="!authStore.isLoggedIn">
 						<NuxtLink to="/login" class="hover:text-indigo-400"
 							>Login</NuxtLink

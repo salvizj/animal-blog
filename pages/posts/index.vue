@@ -31,7 +31,6 @@
 					? JSON.parse(post.image_url).data.publicUrl
 					: '',
 			}));
-			console.log(fetchData.value);
 		} catch (error) {
 			console.error('Failed to fetch data:', error.message);
 		}

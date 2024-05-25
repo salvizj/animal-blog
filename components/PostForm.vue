@@ -1,10 +1,10 @@
 <template>
 	<form
 		@submit.prevent="submitPost"
-		class="space-y-4 rounded-lg max-w-lg mx-auto p-4 bg-white shadow-md"
+		class="space-y-4 rounded-lg max-w-lg mx-auto p-10 bg-white shadow-md"
 	>
 		<h1 class="text-3xl font-bold mb-6 text-center text-black">
-			Create a Fun Home Animal Post
+			Create an Animal Blog Post
 		</h1>
 		<div v-if="imageUrl" class="mb-4">
 			<img
@@ -87,8 +87,7 @@
 	const text = ref(null);
 	const imageUrl = ref(null);
 	const imageFile = ref(null);
-	const userId = ref(user.value?.id);
-
+	const userId = user.value.id;
 	const previewImage = (event) => {
 		const file = event.target.files?.[0];
 		if (file) {
@@ -105,7 +104,6 @@
 			alert('All fields are required!');
 			return;
 		}
-
 		const storage = supabase.storage.from('posts');
 
 		const imagePath = `user_${userId.value}/${imageFile.value.name}`;
