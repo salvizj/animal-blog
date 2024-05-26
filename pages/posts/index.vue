@@ -1,4 +1,5 @@
 <template>
+	<PostFilterForm @filter="filterPosts" />
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		<PostCard
 			v-for="post in fetchData"
@@ -14,18 +15,28 @@
 
 <script setup>
 	import PostCard from '~/components/PostCard.vue';
+	import PostFilterForm from '~/components/PostFilterForm.vue';
 
 	const fetchData = ref([]);
 	const supabase = useSupabaseClient();
 
-	onMounted(async () => {
+	const fetchPosts = async (filters = {}) => {
 		try {
-			const { data: postData, error } = await supabase
-				.from('posts')
-				.select();
+			let query = supabase.from('posts').select();
+
+			if (filters.type) {
+				query = query.ilike('type', `%${filters.type}%`);
+			}
+
+			if (filters.title) {
+				query = query.ilike('title', `%${filters.title}%`);
+			}
+
+			const { data: postData, error } = await query;
 			if (error) {
 				throw error;
 			}
+
 			fetchData.value = postData.map((post) => ({
 				...post,
 				publicUrl: post.image_url
@@ -35,5 +46,13 @@
 		} catch (error) {
 			console.error('Failed to fetch data:', error.message);
 		}
+	};
+
+	const filterPosts = async (filters) => {
+		await fetchPosts(filters);
+	};
+
+	onMounted(async () => {
+		await fetchPosts();
 	});
 </script>

@@ -18,7 +18,7 @@
 	const fetchData = ref([]);
 	const filteredPosts = ref([]);
 	const supabase = useSupabaseClient();
-	console.log(user.value);
+
 	onMounted(async () => {
 		const userID = user.value.id;
 		try {
