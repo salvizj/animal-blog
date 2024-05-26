@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 				'/login',
 				'/posts',
 				'/about',
-				'/posts/postid',
+				'/posts/*', // for /posts/[postid]
 			],
 		},
 	},

@@ -14,6 +14,9 @@
 </template>
 
 <script setup>
+	definePageMeta({
+		middleware: ['auth'],
+	});
 	import PostCard from '~/components/PostCard.vue';
 	import PostFilterForm from '~/components/PostFilterForm.vue';
 
