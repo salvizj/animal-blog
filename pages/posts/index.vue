@@ -9,6 +9,7 @@
 			:type="post.type"
 			:title="post.title"
 			:text="post.text"
+			v-bind:unused-text="post.text"
 		/>
 	</div>
 </template>

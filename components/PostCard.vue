@@ -11,7 +11,6 @@
 		<div class="p-6">
 			<h3 class="text-black text-sm uppercase">{{ type }}</h3>
 			<h2 class="text-xl font-bold mt-2 mb-4">{{ title }}</h2>
-			<p class="text-black">{{ text }}</p>
 		</div>
 	</div>
 </template>
