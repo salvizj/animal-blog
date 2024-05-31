@@ -40,7 +40,6 @@
 	const comment = ref('');
 	const showNotification = ref(false);
 	const router = useRouter();
-	const userEmail = useSupabaseUser().value.email;
 	const supabase = useSupabaseClient();
 
 	const submitComment = async () => {
@@ -49,6 +48,7 @@
 			redirectToLogin();
 			return;
 		}
+		const userEmail = useSupabaseUser().value.email;
 		const { error } = await supabase.from('post-comments').insert([
 			{
 				comment: comment.value,

@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<PostCommentForm @comment-submitted="fetchComments" />
-
 		<div
 			class="flex flex-col items-center justify-center md:justify-center mt-8 md:items-end"
 		>
@@ -21,6 +20,7 @@
 				</button>
 			</div>
 		</div>
+		<h1 class="flex items-start justify-start">COMMENTS:</h1>
 
 		<div>
 			<div v-if="loading" class="text-center mt-8">
