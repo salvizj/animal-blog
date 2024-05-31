@@ -3,13 +3,13 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		<PostCard
 			v-for="post in fetchData"
-			:key="post.id"
-			:id="post.id"
+			:key="post.post_id"
+			:post_id="post.post_id"
 			:imageUrl="post.publicUrl"
 			:type="post.type"
 			:title="post.title"
 			:text="post.text"
-			v-bind:unused-text="post.text"
+			:unused-text="post.text"
 		/>
 	</div>
 </template>
@@ -18,8 +18,6 @@
 	definePageMeta({
 		middleware: ['auth'],
 	});
-	import PostCard from '~/components/PostCard.vue';
-	import PostFilterForm from '~/components/PostFilterForm.vue';
 
 	const fetchData = ref([]);
 	const supabase = useSupabaseClient();

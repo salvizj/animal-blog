@@ -87,7 +87,7 @@
 	const text = ref(null);
 	const imageUrl = ref(null);
 	const imageFile = ref(null);
-	const userId = user.value.id;
+	const userEmail = user.value.email;
 	const previewImage = (event) => {
 		const file = event.target.files?.[0];
 		if (file) {
@@ -106,7 +106,7 @@
 		}
 		const storage = supabase.storage.from('posts');
 
-		const imagePath = `user_${userId.value}/${imageFile.value.name}`;
+		const imagePath = `${userEmail}/${imageFile.value.name}`;
 		const { error } = await storage.upload(imagePath, imageFile.value);
 
 		if (error) {
@@ -119,7 +119,7 @@
 
 		const { error: postError } = await supabase.from('posts').insert([
 			{
-				user_id: userId,
+				user_email: userEmail,
 				type: type.value,
 				title: title.value,
 				text: text.value,

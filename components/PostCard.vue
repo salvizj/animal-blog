@@ -17,22 +17,22 @@
 
 <script setup>
 	const props = defineProps({
-		id: Number,
-		user_id: String,
+		post_id: Number,
+		user_email: String,
 		imageUrl: String,
 		type: String,
 		title: String,
 		text: String,
 	});
-
+	const imageUrl = props.imageUrl;
 	const router = useRouter();
 
 	const redirectToPost = () => {
-		const postId = props.id;
+		const postId = props.post_id;
 		router.push({
 			path: `/posts/${postId}`,
 			query: {
-				user_id: props.user_id,
+				user_email: props.user_email,
 				imageUrl: props.imageUrl,
 				type: props.type,
 				title: props.title,
