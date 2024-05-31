@@ -51,7 +51,7 @@
 			});
 			if (error) throw error;
 			authStore.login();
-			router.push('/success');
+			router.push('/');
 		} catch (error) {
 			errorsMsg.value = error.message;
 		}

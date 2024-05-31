@@ -2,7 +2,7 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 		<PostCard
 			v-for="post in filteredPosts"
-			:key="post.id"
+			:key="post.post_id"
 			:imageUrl="post.publicUrl"
 			:type="post.type"
 			:title="post.title"
@@ -12,20 +12,18 @@
 </template>
 
 <script setup>
-	import PostCard from '~/components/PostCard.vue';
-
 	const user = useSupabaseUser();
 	const fetchData = ref([]);
 	const filteredPosts = ref([]);
 	const supabase = useSupabaseClient();
 
 	onMounted(async () => {
-		const userID = user.value.id;
+		const userEmail = user.value.email;
 		try {
 			const { data: postData, error } = await supabase
 				.from('posts')
 				.select()
-				.eq('user_id', userID);
+				.eq('user_email', userEmail);
 			if (error) {
 				throw error;
 			}

@@ -1,9 +1,7 @@
 <template>
 	<div class="flex justify-center items-center min-h-screen">
-		<register-form />
+		<RegisterForm />
 	</div>
 </template>
 
-<script setup>
-	import RegisterForm from '~/components/RegisterForm.vue';
-</script>
+<script setup></script>

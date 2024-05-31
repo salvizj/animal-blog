@@ -1,7 +1,5 @@
 <template>
-	<post-form />
+	<PostForm />
 </template>
 
-<script setup>
-	import PostForm from '~/components/PostForm.vue';
-</script>
+<script setup></script>
