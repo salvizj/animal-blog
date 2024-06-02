@@ -9,7 +9,6 @@
 			:type="post.type"
 			:title="post.title"
 			:text="post.text"
-			:unused-text="post.text"
 		/>
 	</div>
 </template>

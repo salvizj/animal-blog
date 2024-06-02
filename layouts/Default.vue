@@ -38,11 +38,6 @@
 						>
 					</li>
 					<li v-if="authStore.isLoggedIn">
-						<NuxtLink to="/my-posts" class="hover:text-indigo-400"
-							>My posts</NuxtLink
-						>
-					</li>
-					<li v-if="authStore.isLoggedIn">
 						<NuxtLink to="/make-post" class="hover:text-indigo-400"
 							>Make posts</NuxtLink
 						>

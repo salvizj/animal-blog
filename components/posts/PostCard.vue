@@ -24,19 +24,9 @@
 		title: String,
 		text: String,
 	});
-	const imageUrl = props.imageUrl;
 	const router = useRouter();
-	const postStore = usePostStore();
 
 	const redirectToPost = () => {
-		postStore.setPostData({
-			post_id: props.post_id,
-			user_email: props.user_email,
-			imageUrl: props.imageUrl,
-			type: props.type,
-			title: props.title,
-			text: props.text,
-		});
 		router.push(`/posts/${props.post_id}`);
 	};
 </script>
