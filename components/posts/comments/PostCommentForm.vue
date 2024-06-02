@@ -26,19 +26,12 @@
 			Login
 		</button>
 	</form>
-	<div
-		v-if="showNotification"
-		class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-md transition duration-300 ease-in-out"
-	>
-		Comment submitted successfully!
-	</div>
 </template>
 
 <script setup>
 	const emit = defineEmits(['commentSubmitted']);
 	const authStore = useAuthStore();
 	const comment = ref('');
-	const showNotification = ref(false);
 	const router = useRouter();
 	const supabase = useSupabaseClient();
 
@@ -48,12 +41,12 @@
 			redirectToLogin();
 			return;
 		}
-		const userEmail = useSupabaseUser().value.email;
+		const userUsername = useSupabaseUser().value.user_metadata.username;
 		const { error } = await supabase.from('post-comments').insert([
 			{
 				comment: comment.value,
 				post_id: postId,
-				user_email: userEmail,
+				user_username: userUsername,
 				created_at: new Date().toISOString(),
 			},
 		]);
@@ -62,10 +55,7 @@
 			console.error(error);
 		} else {
 			comment.value = '';
-			showNotification.value = true;
-			setTimeout(() => {
-				showNotification.value = false;
-			}, 3000);
+			alert('Comment submitted successfully!');
 			emit('commentSubmitted');
 		}
 	};

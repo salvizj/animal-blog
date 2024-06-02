@@ -37,6 +37,7 @@
 					:key="comment.id"
 					:comment="comment"
 					class="mb-4"
+					@comment-deleted="handleCommentDeleted"
 				/>
 			</div>
 		</div>
@@ -66,6 +67,10 @@
 
 	const orderByLikes = (order) => {
 		sortOrder.value = order;
+		fetchComments();
+	};
+
+	const handleCommentDeleted = () => {
 		fetchComments();
 	};
 
