@@ -3,30 +3,38 @@
 		<div
 			class="comment-container bg-indigo-600 p-4 text-white shadow-xl rounded-lg mb-4"
 		>
-			<div
-				class="flex flex-col md:flex-row items-center justify-between mb-4"
-			>
-				<div class="comment-info flex items-center">
-					<p class="text-lg md:text-xl mr-2 font-semibold">
+			<div class="flex flex-col items-start justify-center mb-4 gap-4">
+				<div class="comment-username md:mr-4 mb-2 md:mb-0">
+					<p class="text-lg md:text-xl font-semibold">
 						{{ comment.user_username }}:
 					</p>
-					<p class="text-base md:text-lg">{{ comment.comment }}</p>
 				</div>
-				<div class="comment-actions flex items-center mt-2 md:mt-0">
-					<p class="text-lg md:text-base mr-2">LIKES: {{ likes }}</p>
-					<button
-						@click="toggleLike"
-						class="like-button bg-transparent border border-indigo-100 text-white text-2xl md:text-2xl px-3 md:px-4 py-1 md:py-2 rounded-3xl hover:bg-indigo-600 hover:border-indigo-950 transition duration-300 ease-in-out"
+				<div class="flex flex-col w-full">
+					<p class="text-lg md:text-2xl md:mr-4">
+						{{ comment.comment }}
+					</p>
+					<div
+						class="flex gap-4 md:gap-2 md:justify-end justify-center flex-row md:mt-8 mt-4 items-center"
 					>
-						&#8593;
-					</button>
-					<button
-						v-if="isCurrentUser"
-						@click="deleteComment"
-						class="delete-button ml-4 text-white border-2 py-2 px-3 hover:border-indigo-950 transition duration-300 ease-in-out"
-					>
-						&#10005;
-					</button>
+						<button
+							v-if="userIsLoggedIn"
+							@click="toggleLike"
+							class="like-button flex flex-row justify-center items-center bg-transparent border border-indigo-100 text-white text-lg md:text-xl px-3 md:px-4 py-3 md:py-2 rounded-full hover:bg-indigo-600 hover:border-indigo-950 transition duration-300 ease-in-out"
+							style="flex-wrap: nowrap"
+						>
+							&#8593; Like
+						</button>
+
+						<p class="text-white text-xl">Likes: {{ likes }}</p>
+
+						<button
+							v-if="isCurrentUser && userIsLoggedIn"
+							@click="deleteComment"
+							class="delete-button text-white border py-3 md:py-2 px-3 md:px-4 hover:border-indigo-950 transition duration-300 ease-in-out rounded-full"
+						>
+							&#10005; Delete
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="border-t pt-2 text-sm text-white">
@@ -44,10 +52,29 @@
 	});
 	const emits = defineEmits(['comment-deleted']);
 	const supabase = useSupabaseClient();
-	const userUsername = useSupabaseUser().value.user_metadata.username;
+	const user = useSupabaseUser();
+	const userIsLoggedIn = user.value ? true : false;
+	const userUsername = user.value ? user.value.user_metadata.username : null;
 	const isCurrentUser = ref(userUsername === props.comment.user_username);
 	const likes = ref(props.comment.likes);
+	const checkIfLiked = async () => {
+		try {
+			const { data, error } = await supabase
+				.from('liked_comments')
+				.select('*')
+				.eq('user_username', userUsername)
+				.eq('comment_id', props.comment.comment_id);
 
+			if (error) {
+				throw error;
+			}
+
+			return data.length > 0;
+		} catch (error) {
+			console.error('Error checking if comment is liked:', error);
+			return false;
+		}
+	};
 	const toggleLike = async () => {
 		const liked = await checkIfLiked();
 
