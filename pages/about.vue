@@ -5,7 +5,7 @@
 </script>
 
 <template>
-	<div class="max-w-3xl mx-auto px-4 py-8">
+	<div class="max-w-3xl mx-auto px-4 py-8 container mx-auto">
 		<h1 class="text-3xl font-bold mb-4">About Us</h1>
 		<p class="text-lg mb-4">
 			Welcome to our blog! We are passionate about sharing stories,

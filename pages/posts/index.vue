@@ -1,15 +1,17 @@
 <template>
-	<PostFilterForm @filter="filterPosts" />
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-		<PostCard
-			v-for="post in fetchData"
-			:key="post.post_id"
-			:post_id="post.post_id"
-			:imageUrl="post.publicUrl"
-			:type="post.type"
-			:title="post.title"
-			:text="post.text"
-		/>
+	<div class="container mx-auto">
+		<PostFilterForm @filter="filterPosts" />
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<PostCard
+				v-for="post in fetchData"
+				:key="post.post_id"
+				:post_id="post.post_id"
+				:imageUrl="post.publicUrl"
+				:type="post.type"
+				:title="post.title"
+				:text="post.text"
+			/>
+		</div>
 	</div>
 </template>
 

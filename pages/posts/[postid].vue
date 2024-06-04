@@ -1,5 +1,5 @@
 <template>
-	<div v-if="post">
+	<div v-if="post" class="container mx-auto">
 		<h2 class="md:text-3xl text-xl text-white font-bold p-4">
 			{{ post.title }}
 		</h2>

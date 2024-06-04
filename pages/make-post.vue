@@ -1,5 +1,7 @@
 <template>
-	<PostForm />
+	<div class="container mx-auto">
+		<PostForm />
+	</div>
 </template>
 
 <script setup>

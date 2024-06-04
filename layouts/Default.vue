@@ -69,7 +69,7 @@
 				</ul>
 			</nav>
 		</header>
-		<main class="container mx-auto p-4 md:p-6">
+		<main>
 			<NuxtPage />
 		</main>
 	</div>
