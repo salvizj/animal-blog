@@ -47,7 +47,7 @@
 				comment: comment.value,
 				post_id: postId,
 				user_username: userUsername,
-				created_at: new Date().toISOString(),
+				created_at: new Date().toISOString().split('T')[0],
 			},
 		]);
 
