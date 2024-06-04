@@ -69,7 +69,7 @@
 				</ul>
 			</nav>
 		</header>
-		<main>
+		<main class="p-8">
 			<NuxtPage />
 		</main>
 	</div>
