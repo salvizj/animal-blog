@@ -1,8 +1,7 @@
 <template>
 	<div
-		class="relative bg-img mx-auto text-center min-h-screen flex flex-col justify-center bg-center"
+		class="relative mx-auto text-center min-h-screen flex flex-col justify-center bg-center"
 	>
-		<div class="absolute inset-0 bg-indigo-950 opacity-90"></div>
 		<div class="relative z-10 p-8 container mx-auto">
 			<h1 class="text-4xl md:text-6xl font-bold text-white">
 				Place where you can post about funny things with your animals
@@ -22,8 +21,4 @@
 	</div>
 </template>
 
-<style scoped>
-	.bg-img {
-		background-image: url('public/cat-bg.jpg');
-	}
-</style>
+<style scoped></style>
