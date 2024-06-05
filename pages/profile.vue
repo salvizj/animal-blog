@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="min-h-screen flex items-center justify-center container mx-auto"
-	>
+	<div class="min-h-screen flex items-center justify-center">
 		<div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
 			<h1 class="text-2xl text-black font-semibold text-center mb-8">
 				Welcome, {{ user.email }}

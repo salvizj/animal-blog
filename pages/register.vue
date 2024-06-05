@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="flex justify-center items-center min-h-screen container mx-auto"
-	>
+	<div class="flex justify-center items-center min-h-screen">
 		<RegisterForm />
 	</div>
 </template>

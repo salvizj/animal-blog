@@ -1,5 +1,5 @@
 <template>
-	<div class="container mx-auto">
+	<div>
 		<PostFilterForm @filter="filterPosts" />
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			<PostCard
