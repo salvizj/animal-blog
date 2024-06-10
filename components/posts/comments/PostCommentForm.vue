@@ -13,14 +13,14 @@
 		<button
 			v-if="authStore.isLoggedIn"
 			type="submit"
-			class="ml-2 bg-indigo-500 md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
+			class="ml-4 bg-indigo-500 md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
 		>
 			Comment
 		</button>
 		<button
 			v-else
 			type="button"
-			class="ml-2 bg-indigo-500 md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
+			class="ml-4 bg-indigo-500 md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
 			@click="redirectToLogin"
 		>
 			Login
