@@ -1,6 +1,6 @@
 <template>
 	<div v-if="post">
-		<h2 class="md:text-3xl text-xl text-white font-bold p-4">
+		<h2 class="md:text-3xl text-xl text-white font-bold p-4 mx-auto">
 			{{ post.title }}
 		</h2>
 		<div
