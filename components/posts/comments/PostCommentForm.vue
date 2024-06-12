@@ -1,8 +1,8 @@
 <template>
 	<form
 		@submit.prevent="submitComment"
+		class="bg-white md:p-4 p-3 rounded-lg shadow-md flex flex-wrap items-center w-full"
 		method="post"
-		class="bg-white md:p-4 p-3 rounded-lg shadow-md flex flex-wrap items-center mt-4"
 	>
 		<input
 			v-model="comment"
@@ -13,7 +13,7 @@
 		<button
 			v-if="authStore.isLoggedIn"
 			type="submit"
-			class="ml-2 mt-2 md:mt-0 bg-indigo-500 text-sm md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
+			class="ml-2 mt-2 md:mt-0 bg-indigo-500 text-lg md:text-xl text-white p-3 rounded-lg hover:bg-indigo-600 transition duration-300 ease-in-out"
 		>
 			Comment
 		</button>
